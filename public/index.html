@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Player</title>
+</head>
+
+<body>
+    <audio>
+        <source src="music/aakash-2.mp3" type="audio/mpeg">
+    </audio>
+    <div class="bg">
+        <section class="player">
+            <div class="container">
+                <div class="top-icons">
+                    <a href="#"><i class="fa fa-heart"></i></a>
+                    <a href="#"><i class="fas fa-grin-alt"></i></a>
+                </div>
+                <div class="img">
+                    <img src="img/aakash.JPG" alt="">
+                </div>
+                <div class="text">
+                    <h1 id="title"></h1>
+                    <h4 id="artist"></h4>
+                    </h4>
+                </div>
+                <div class="time">
+                    <a href="#">1:58</a>
+                    <a href="#">3:00</a>
+                </div>
+
+                <input type="range" style='width:100%' id='timeInstance' min="0" max="100" value="0">
+
+                <div class="btns">
+                    <a href="#"><i id = 'retweet' class="fa fa-retweet"></i></a>
+                    <a href="#"><i class="fa fa-backward" id="prev" title="Previous"></i></a>
+                    <a href="#"><i class="fa fa-play" id="play" title="play"></i></a>
+                    <a href="#"><i class="fa fa-forward" id="next" title="Next"></i></a>
+                    <a href="#"><i id = 'random' class="fa fa-random"></i></a>
+                </div>
+            </div>
+
+
+
+
+
+        </section>
+        <img src='./img/capture.jpg' class='some' style='display: none;' width='48' height='48' />
+
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class='choose'>
+                <div class='file'>
+                    <i class="fa fa-file-image fa-5x"></i>
+                    <h2>Choose from a File</h2>
+                    <input id='fileChoose' type='file'>
+                </div>
+                <div class='camera'>
+
+                    <i class="fa fa-camera fa-5x"></i>
+                    <h2>Capture from Camera</h2>
+                </div>
+
+                <button id='done'>Done</button>
+
+            </div>
+
+            <div class='openCamera'>
+                <div class='capture'>
+                    <img src='./img/capture.png' alt='capture' class='captureImage' tooltip/>
+                </div>
+                <video src='' autoplay id='video' style='width: 80%'></video>
+            </div>
+        </div>
+
+    </div>
+
+    <script async src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.0/dist/axios.min.js"></script>
+    <script async src='./js/script.js'></script>
+
+</body>
+
+</html>
