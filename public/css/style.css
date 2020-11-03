@@ -51,6 +51,17 @@ img {
     margin: 10px 0;
 }
 
+.bottom-icons {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.bottom-icons a {
+    color: #fff;
+    font-size: 1.3em;
+}
+
 .top-icons a {
     color: #fff;
     font-size: 1.3em;
@@ -58,6 +69,37 @@ img {
 
 #fileChoose {
     display: none
+}
+
+h2 {
+    border-radius: 5px;
+    border: 2px solid black;
+    margin: 2px
+}
+
+h2:hover {
+    background: brown;
+    color: white
+}
+
+#list-select {
+    opacity: 0;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 68%;
+    right: 0%;
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+
+.fa-list-ul {
+    color: black
+}
+
+.fa-ellipsis-v {
+    color: black
 }
 
 .openCamera {
@@ -300,6 +342,43 @@ button:hover {
     float: right;
     font-size: 28px;
     font-weight: bold;
+}
+
+#toggleThemWithThis {
+    display: none;
+    height: 444px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+#toggleThemWithThis::-webkit-scrollbar {
+    display: none;
+}
+
+.listContent {
+    display: block;
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+
+.listContent>a {
+    float: right;
+    margin-top: 15px;
+}
+
+#songNameWhenNeeded {
+    display: none;
+}
+
+.listContent>h2 {
+    border: 0px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.listContent>.fa-play {
+    color: purple;
+    float: right
 }
 
 .close:hover,

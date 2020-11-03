@@ -1,7 +1,15 @@
 // var tf = require('@tensorflow/tfjs');
-
+const currentPlaylist = document.querySelector('.fa-list-ul');
+const listSelector = document.getElementById('list-select');
+const allListSelect = document.querySelector('.fa-ellipsis-v');
+const toggleThem = document.getElementById('toggleThem');
+const toggleThemWithThis = document.getElementById('toggleThemWithThis');
 const music = document.querySelector("audio");
 const img = document.querySelector("img");
+const listSelectHappy = document.querySelector('.list-select-happy')
+const listSelectSad = document.querySelector('.list-select-sad')
+const listSelectSurprise = document.querySelector('.list-select-surprise')
+const listSelectAngry = document.querySelector('.list-select-angry')
 const play = document.getElementById("play");
 const artist = document.getElementById("artist");
 const title = document.getElementById("title");
@@ -13,7 +21,6 @@ const timeInstance = document.getElementById("timeInstance");
 const time = document.querySelector(".time");
 const capture = document.querySelector(".capture");
 var index = 0;
-const obj = { height: 127, width: 127, y: 121, x: 431 }
 var retw = false;
 const songs = [{
         name: "aakash-1",
@@ -243,5 +250,72 @@ async function sendImage() {
             .catch(err => {
                 console.log('error occured')
             })
+    }
+}
+var currentEmotion = 'Surprise'
+var toggleThemToggled = false;
+currentPlaylist.addEventListener('click', () => {
+    toggleThemFn(toggleThemToggled, currentEmotion)
+})
+var listdisplayed = false;
+allListSelect.addEventListener('click', () => {
+    listSelector.style.opacity = listdisplayed ? '0' : '1'
+    allListSelect.style.color = listdisplayed ? 'black' : 'blue'
+    listdisplayed = !listdisplayed
+})
+listSelectHappy.onclick = () => {
+    toggleThemFn(false, 'Happy')
+    listSelector.style.opacity = '0'
+    allListSelect.style.color = 'black'
+    listdisplayed = false
+}
+listSelectAngry.onclick = () => {
+    toggleThemFn(false, 'Angry')
+
+    listSelector.style.opacity = '0'
+    allListSelect.style.color = 'black'
+    listdisplayed = false
+}
+listSelectSad.onclick = () => {
+    toggleThemFn(false, 'Sad')
+
+    listSelector.style.opacity = '0'
+    allListSelect.style.color = 'black'
+    listdisplayed = false
+}
+listSelectSurprise.onclick = () => {
+    toggleThemFn(false, 'Surprise')
+    listSelector.style.opacity = '0'
+    allListSelect.style.color = 'black'
+    listdisplayed = false
+}
+
+function toggleThemFn(toggle, emotion) {
+    toggleThem.style.display = toggle ? 'block' : 'none';
+    toggleThemWithThis.style.display = toggle ? 'none' : 'block';
+    currentPlaylist.style.color = toggle ? 'black' : 'blue';
+    document.getElementById('songNameWhenNeeded').style.display = toggle ? 'none' : 'block'
+    if (!toggle)
+        displayLists(emotion)
+
+    toggleThemToggled = !toggleThemToggled
+}
+
+function displayLists(emotion) {
+    document.querySelector('.listTitle').textContent = `${emotion} songs`;
+    document.querySelector('.listContainer').innerHTML = '';
+    for (let i = 0; i < 10; i++) {
+        let listContent = document.createElement('div');
+        listContent.className = 'listContent';
+        let songName = document.createElement('h2');
+        songName.textContent = 'This Song';
+        let anchor = document.createElement('a');
+        let i = document.createElement('i');
+        i.className = 'fa fa-play';
+        i.setAttribute('title', 'play');
+        anchor.appendChild(i)
+        listContent.appendChild(songName)
+        listContent.appendChild(anchor)
+        document.querySelector('.listContainer').appendChild(listContent)
     }
 }

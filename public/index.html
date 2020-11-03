@@ -18,21 +18,23 @@
             <div class="container">
                 <div class="top-icons">
                     <a href="#"><i class="fa fa-heart"></i></a>
+                    <h1 id='songNameWhenNeeded'>Love Song</h1>
                     <a href="#"><i class="fas fa-grin-alt"></i></a>
                 </div>
-                <div class="img">
-                    <img src="img/aakash.JPG" alt="">
+                <div id='toggleThem'>
+                    <div class="img">
+                        <img src="img/aakash.JPG" alt="">
+                    </div>
+                    <div class="text">
+                        <h1 id="title"></h1>
+                        <h4 id="artist"></h4>
+                        </h4>
+                    </div>
+                    <div class="time">
+                        <a href="#">1:58</a>
+                        <a href="#">3:00</a>
+                    </div>
                 </div>
-                <div class="text">
-                    <h1 id="title"></h1>
-                    <h4 id="artist"></h4>
-                    </h4>
-                </div>
-                <div class="time">
-                    <a href="#">1:58</a>
-                    <a href="#">3:00</a>
-                </div>
-
                 <input type="range" style='width:100%' id='timeInstance' min="0" max="100" value="0">
 
                 <div class="btns">
@@ -42,14 +44,37 @@
                     <a href="#"><i class="fa fa-forward" id="next" title="Next"></i></a>
                     <a href="#"><i id = 'random' class="fa fa-random"></i></a>
                 </div>
+
+                <div id='toggleThemWithThis'>
+                    <h1 class='listTitle' style='text-align: center; position:fixed; left: 50%;
+                    transform: translate(-50%,0);font-size: 30px'></h1>
+                    <div class='listContainer' style='margin-top: 40px'>
+
+
+                    </div>
+
+
+                </div>
+                <div class="bottom-icons">
+                    <a href="#"><i class="fa fa-list-ul"></i></a>
+                    <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                </div>
             </div>
 
 
 
+            <div id='list-select'>
+                <h2 class='list-select-happy'>Happy Songs</h2>
 
+                <h2 class='list-select-sad'>Sad Songs</h2>
+
+                <h2 class='list-select-surprise'>Surprise Songs</h2>
+
+                <h2 class='list-select-angry'>Angry Songs</h2>
+
+            </div>
 
         </section>
-        <img src='./img/capture.jpg' class='some' style='display: none;' width='48' height='48' />
 
     </div>
 
