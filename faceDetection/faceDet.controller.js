@@ -66,13 +66,13 @@ async function faceDet(req, res, next) {
 
             const prediction = await model.predict(tensor).data();
             var emotions = [
-                "angry",
-                "disgust",
-                "fear",
-                "happy",
-                "sad",
-                "surprise",
-                "neutral"
+                "Angry",
+                "Disgust",
+                "Fear",
+                "Happy",
+                "Sad",
+                "Surprise",
+                "Neutral"
             ];
             var index = Object.values(prediction).findIndex(
                 (p) => p === Math.max(...Object.values(prediction))
