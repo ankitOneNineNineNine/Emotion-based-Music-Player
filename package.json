@@ -8,8 +8,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js",
-    "postinstall": "yarn --cwd lib/custom-node-script"
-  
+      
   },
   "dependencies": {
     "@tensorflow/tfjs-node": "^2.6.0",
