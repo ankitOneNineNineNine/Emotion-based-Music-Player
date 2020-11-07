@@ -7,7 +7,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon app.js"
       
   },
   "dependencies": {
