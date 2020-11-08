@@ -25,7 +25,7 @@ app.use(cookieParser());
 // app.use('/music', express.static(path.join(__dirname, "music")));
 // app.use('/images', express.static(path.join(__dirname, "images")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-// app.use("/models", express.static(path.join(__dirname, "faceDetection/model")));
+app.use("/models", express.static(path.join(__dirname, "faceDetection/model")));
 // app.use('/', (req,res,next)=>{
 //   res.sendFile(path.join(__dirname, "public/index.html"))
 // })
