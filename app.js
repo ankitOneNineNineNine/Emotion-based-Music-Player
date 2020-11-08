@@ -10,11 +10,11 @@ var authenticate = require("./middleware/authenticate.middleware");
 var authRoute = require("./user/auth.route");
 var userRoute = require("./user/user.route");
 var faceDetRoute = require("./faceDetection/faceDet.route");
-
+var compression = require('compression');
 require("./db");
 
 var app = express();
-
+app.use(compression())
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json({limit:'50mb'}));
