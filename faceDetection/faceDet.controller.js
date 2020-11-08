@@ -5,12 +5,9 @@ const canvas = require("canvas");
 const fs = require("fs");
 const cv = require('opencv4nodejs')
 const sys = require('sys');
-const { isUndefined } = require("util");
-async function faceDetWithCapture(req, res, next) {
 
 
 
-}
 async function faceDet(req, res, next) {
     let fileName
     if (req.file) {
@@ -51,9 +48,9 @@ async function faceDet(req, res, next) {
                 msg: 'No face detected'
             })
         } else {
-            const model = await tf.loadLayersModel(
-                "http://localhost:8000/models/model.json"
-            );
+            // const model = await tf.loadLayersModel(
+            //     "http://localhost:8000/models/model.json"
+            // );
             const obj = objects[0]
             const cnvs = canvas.createCanvas(48, 48);
             const ctx = cnvs.getContext("2d");
