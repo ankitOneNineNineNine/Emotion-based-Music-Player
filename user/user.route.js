@@ -3,6 +3,15 @@ var uploadProfileImage = require("./../middleware/uploadProfileImage");
 var userCtrl = require("./user.controller");
 
 router.get("/", userCtrl.getAll);
+router.get("/loginWithJWT",function(req,res,next){
+  if(req.loggedInUser)
+  res.status(200).json(req.loggedInUser)
+  else{
+    next({
+      msg: 'not logged in'
+    })
+  }
+})
 router.post(
   "/uploadProfileImage",
   uploadProfileImage.single("img"),

@@ -11,10 +11,12 @@ module.exports = function (req, res, next) {
 
     if(token){
         jwt.verify(token, config.jwtSecret, function(err, decodedJWT){
+           
             if(err){
+                console.log(err)
                 return next(err)
             }
-            userModel.findById(decodedJWT.id)
+                      userModel.findById(decodedJWT.id)
                 .exec(function(err,user){
                     if(err) return next(err)
                     if(!user) return next({msg: 'user not found from system or please sign in again'})
