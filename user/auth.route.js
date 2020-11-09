@@ -7,6 +7,7 @@ var randomString = require("randomstring");
 var mailSend = require("./mail.send");
 
 router.route("/register").post(function (req, res, next) {
+
   var newUser = new userModel({});
   newUser.fullName = req.body.fullName;
   newUser.userName = req.body.userName;
@@ -14,23 +15,41 @@ router.route("/register").post(function (req, res, next) {
   newUser.password = bcrypt.hashSync(req.body.password, 10);
   newUser
     .save()
-    .then((data) => res.status(200).json(data))
-    .catch((err) => next(err));
+    .then((data) => {
+      var token = jwt.sign(
+        {
+          id: data._id,
+        },
+        config.jwtSecret
+      );
+      var response = {
+        token, 
+        user:data
+      }
+        res.status(200).json(response)
+      
+      })
+    .catch((err) => {
+      console.log(err)
+      next(err)
+    });
 });
 
 router.route("/login").post(function (req, res, next) {
+
   userModel
     .findOne({
       $or: [
         {
-          email: req.body.username,
+          email: req.body.userName,
         },
         {
-          username: req.body.username,
+          userName: req.body.userName,
         },
       ],
     })
     .then((user) => {
+      console.log(user)
       if (user) {
         var passMatched = bcrypt.compareSync(req.body.password, user.password);
         if (passMatched) {
@@ -40,7 +59,11 @@ router.route("/login").post(function (req, res, next) {
             },
             config.jwtSecret
           );
-          res.status(200).json({ token });
+          var response = {
+            token, 
+            user
+          }
+            res.status(200).json(response)
         } else {
           return next({
             msg: "invalid password",

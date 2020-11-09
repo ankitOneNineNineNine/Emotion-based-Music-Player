@@ -23,11 +23,11 @@ app.use(express.urlencoded({ limit:'50mb', extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, "public")));
 // app.use('/music', express.static(path.join(__dirname, "music")));
-<<<<<<< HEAD
+
 app.use('/images', express.static(path.join(__dirname, "images")));
-=======
+
 // app.use('/images', express.static(path.join(__dirname, "images")));
->>>>>>> main
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/models", express.static(path.join(__dirname, "faceDetection/model")));
 // app.use('/', (req,res,next)=>{
