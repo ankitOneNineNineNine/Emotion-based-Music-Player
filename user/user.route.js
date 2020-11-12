@@ -17,6 +17,7 @@ router.post(
   uploadProfileImage.single("img"),
   userCtrl.uploadImage
 );
+
 router
   .route("/:id")
   .get(userCtrl.getById)

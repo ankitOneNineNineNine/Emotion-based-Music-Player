@@ -24,19 +24,26 @@ const userSchema = new Schema({
         type: String,
     },
     songs: [{
-        name: {
+        title: {
             type: String,
             required: true,
         },
-        author: {
+        artist: {
+            type: String,
+            required:true,
+        },
+        emotion: {
             type: String,
         },
-        playedCount: {
+        src: {
             type: String,
+            required:true,
         },
-        image: {
-            type: String,
-        },
+        img: {
+            type:String,
+            required:true,
+            
+        }
     }, ],
     passwordResetToken: String,
     passwordResetExpiry: Date,

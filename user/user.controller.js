@@ -9,6 +9,14 @@ function mapUserRequest(user, userDetails) {
   if (userDetails.fullName) user.fullName = userDetails.fullName;
   if (userDetails.password)
     user.password = bcrypt.hashSync(userDetails.password, 10);
+    if(userDetails.song){
+      if(userDetails.action === 'remove'){
+        user.songs.splice(user.songs.indexOf(userDetails.song), 1);
+      }
+      else{
+        user.songs.push(userDetails.song)
+      }
+    }
 
   return user;
 }
@@ -54,6 +62,7 @@ function getById(req, res, next) {
   });
 }
 function update(req, res, next) {
+
   return userModel.findById(req.params.id).exec(function (err, user) {
     if (err) return next(err);
     if (!user) return next({ msg: "user not found" });
@@ -61,7 +70,7 @@ function update(req, res, next) {
     var updatedUser = mapUserRequest(user, req.body);
     updatedUser.save(function (err, updated) {
       if (err) return next(err);
-      res.status(200).json("updated");
+      res.status(200).json(updated);
     });
   });
 }
