@@ -77,13 +77,13 @@ async function faceDet(req, res, next) {
             // );
 
             // res.status(200).json(emotions[index])
-            // fs.unlink(
-            //     path.join(process.cwd(), "./faceDetection/images/" + fileName),
-            //     function(err, removed) {
-            //         if (err) console.log("file removing err");
-            //         else console.log("file removed");
-            //     }
-            // );
+            fs.unlink(
+                path.join(process.cwd(), "./faceDetection/images/" + fileName),
+                function(err, removed) {
+                    if (err) console.log("file removing err");
+                    else console.log("file removed");
+                }
+            );
         }
 
     } catch (e) {
