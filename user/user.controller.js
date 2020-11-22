@@ -27,13 +27,30 @@ function uploadImage(req, res, next) {
   }
   if (req.file) {
     var user = req.loggedInUser;
+    if(user.image){
+      console.log(  path.join(
+        process.cwd(),
+        "/profileImages/" + user.image
+      ))
+      fs.unlink(
+        path.join(
+          process.cwd(),
+          "/profileImages/" + user.image
+        ),
+        function (err, removed) {
+          if (err) console.log("file removing err");
+          else console.log("file removed");
+        }
+      );
+    }
+
     user.image = req.file.filename;
     user.save(function (err, uploaded) {
       if (err) {
         fs.unlink(
           path.join(
             process.cwd(),
-            "./uploads/profileImages" + req.file.filename
+            "/profileImages" + req.file.filename
           ),
           function (err, removed) {
             if (err) console.log("file removing err");
