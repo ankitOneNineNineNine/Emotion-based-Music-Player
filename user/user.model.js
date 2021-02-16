@@ -2,10 +2,6 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    fullName: {
-        type: String,
-        // required: true,
-    },
     userName: {
         type: String,
         required: true,
@@ -45,11 +41,15 @@ const userSchema = new Schema({
             
         }
     }, ],
-    passwordResetToken: String,
-    passwordResetExpiry: Date,
+ 
 }, {
     timestamps: true,
 });
 
 const user = mongoose.model("user", userSchema);
 module.exports = user;
+
+
+
+// passwordResetToken: String,
+// passwordResetExpiry: Date,

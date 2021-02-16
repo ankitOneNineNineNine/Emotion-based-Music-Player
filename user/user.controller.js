@@ -43,7 +43,6 @@ function uploadImage(req, res, next) {
         }
       );
     }
-
     user.image = req.file.filename;
     user.save(function (err, uploaded) {
       if (err) {
@@ -59,7 +58,7 @@ function uploadImage(req, res, next) {
         );
         return next(err);
       } else {
-        res.status(200).json("successfully uploaded");
+        res.status(200).json(uploaded);
       }
     });
   }

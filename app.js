@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 require('dotenv').config()
 var cookieParser = require("cookie-parser");
+var fs = require('fs')
 var logger = require("morgan");
 var config = require("./index");
 var cors = require("cors");
@@ -12,6 +13,12 @@ var userRoute = require("./user/user.route");
 var faceDetRoute = require("./faceDetection/faceDet.route");
 var compression = require('compression');
 require("./db");
+var https = require('https');
+const options = {
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+  };
+  
 
 var app = express();
 app.use(compression())
@@ -22,12 +29,14 @@ app.use(express.urlencoded({ limit:'50mb', extended: false }));
 
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, "public")));
-// app.use('/music', express.static(path.join(__dirname, "music")));
+app.use('/music', express.static(path.join(__dirname, "music")));
 
 app.use('/images', express.static(path.join(__dirname, "images")));
 
 // app.use('/images', express.static(path.join(__dirname, "images")));
-
+app.get('/',(req,res)=>{
+res.send('WORKING!!')
+})
 app.use("/profile", express.static(path.join(__dirname, "profileImages")));
 app.use("/models", express.static(path.join(__dirname, "faceDetection/model")));
 // app.use('/', (req,res,next)=>{
@@ -51,9 +60,11 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
-
-app.listen(process.env.PORT||8000, function(err, connected) {
+// var server = https.createServer(options, app);
+// server.listen(8000,'0.0.0.0', ()=>{
+//     console.log('connected')
+// })
+app.listen(process.env.PORT||8000,'0.0.0.0' , function(err, connected) {
     if (err) console.log("error connecting to server");
     else console.log("server connected to port", 8000);
 });

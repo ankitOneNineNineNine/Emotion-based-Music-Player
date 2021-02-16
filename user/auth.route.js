@@ -106,7 +106,7 @@ router.route("/forgot-password").post(function (req, res, next) {
       var mailData = {
         name: user.userName,
         email: user.email,
-        link: `${req.headers.origin}/reset-password/${passwordResetToken}`,
+        link: `${req.headers.origin}?reset-password=${passwordResetToken}`,
       };
 
       var mailContent = mailSend.prepareMail(mailData);
